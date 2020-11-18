@@ -16,9 +16,18 @@ recursive step - concat or slice(maybe together)
 
 // your code here
 
-const flatten = array => {
-  if(array.length === 0) return [];
+let flatten = array => {
+  let newArr = [];
+  if (array.length === 0) return [];
 
+  array.forEach(function(contents) {
+    if (Array.isArray(contents)) {
+      newArr.push(...flatten(contents))
+    } else (
+      newArr.push(contents)
+    )
+  });
+  return newArr
 }
 
 
